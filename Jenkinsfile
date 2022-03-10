@@ -1,10 +1,18 @@
 pipeline {
-  agent any
-  stages {
-    stage('Install dependencies') {
-      steps {
-        sh 'pip install Flask'
-      }
+    agent none
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'python:3-alpine'
+                }
+            }
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install Flask'
+                   
+                }
+            }
+        }
     }
-  }
 }
