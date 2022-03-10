@@ -1,7 +1,10 @@
-stages {
-    stage('install dependencies') {
-        steps {
-            sh 'python -m pip install Flask'
-        }
+pipeline {
+  agent any
+  stages {
+    stage('Install dependencies') {
+      steps {
+        'pip install Flask"'
+      }
     }
+  }
 }
